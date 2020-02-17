@@ -94,7 +94,8 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.less', '.css'],
     alias: {
       // Use for absolute paths
-      //   components: path.resolve(__dirname, 'src/components/'),
+      components: path.resolve(__dirname, 'src/components/'),
+      scenes: path.resolve(__dirname, 'src/scenes/'),
     },
   },
   devServer: {
