@@ -7,6 +7,8 @@ My basic implementation of a React App with:
 - Prettier
 - TsLint
 - Husky
+- Reach Router
+- Jest
 
 ## Installation
 
