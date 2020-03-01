@@ -92,11 +92,7 @@ module.exports = {
   plugins: [miniCssExtractPlugin, htmlPlugin, hotModulePlugin],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.less', '.css'],
-    alias: {
-      // Use for absolute paths
-      components: path.resolve(__dirname, 'src/components/'),
-      scenes: path.resolve(__dirname, 'src/scenes/'),
-    },
+    modules: [path.resolve('./src'), path.resolve('./node_modules')],
   },
   devServer: {
     compress: true,
