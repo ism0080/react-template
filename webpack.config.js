@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 /**
  * Root Path
@@ -39,6 +40,17 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
   chunkFilename: '[id].css',
   filename: '[name].css',
 })
+
+/**
+ * HTML Webpack Plugin
+ * @desc Copy static files to be used in build
+ */
+const copyWebpackPlugin = new CopyWebpackPlugin([
+  {
+    from: './public/assets/*',
+    to: './assets/[name].[ext]',
+  },
+])
 
 /**
  * Webpack Configuration
@@ -87,9 +99,13 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {
+        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$|\.pdf$/,
+        loader: 'file-loader?name=[name].[ext]',
+      },
     ],
   },
-  plugins: [miniCssExtractPlugin, htmlPlugin, hotModulePlugin],
+  plugins: [miniCssExtractPlugin, htmlPlugin, hotModulePlugin, copyWebpackPlugin],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.less', '.css'],
     modules: [path.resolve('./src'), path.resolve('./node_modules')],

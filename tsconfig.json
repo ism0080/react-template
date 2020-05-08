@@ -29,9 +29,6 @@
   },
   "include": ["./src/**/*", "**/*", "./**/*.d.ts"],
   "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
-  "paths": {
-    "components": "./src/components"
-  },
   "awesomeTypescriptLoaderOptions": {
     "reportFiles": ["./src/**/*"]
   }
